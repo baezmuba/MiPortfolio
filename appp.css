@@ -1,0 +1,531 @@
+@charset "UTF-8";
+/*
+
+  Con este reset vamos a resolver:
+    👉 Unificar el uso de Custom Properties
+    👉 Problemas de box-model más generales
+    👉 Problemas con imagenes, vídeos e iconos svg
+    👉 Problemas con tipografías y etiquetas input en formularios
+    👉 Unificar la tipografía de todas las etiquetas de una web
+
+*/
+/* Aquí definimos las Custom properties */
+:root {
+  --negro: #393939;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #ececec;
+  }
+}
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation: none !important;
+            animation: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* opcional */
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  line-height: 1.4em;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* ESTRUCTURA BASICA Y MINIMA DE HTML */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/font/style.css">
+    <link rel="stylesheet" href="app.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="h1"><a href="#inicio" class="a">Timmy Anderson</a></h1>
+        <nav class="nav">
+            <ul class="ul">
+                <li class="li"><a href="#inicio" title="Inicio" class="a">Inicio</a></li>
+                <li class="li"><a href="#works" title="Trabajos" class="a">Works</a></li>
+                <li class="li"><a href="#about" title="Contacto" class="a">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        
+        <div class="seccion" id="inicio">
+            <div class="circulo">
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+                <div class="circulo"></div>
+            </div>
+            <section class="section">
+                <h2 class="h2">Timmy Anderson</h2>
+                <h3 class="h3">Frontend Developer</h3>
+
+                <ul class="ul">
+                    <li class="li">
+                        <a href="#" class="a" title="Github">Visitar mi Github</a></li>
+                    <li class="li">
+                        <a href="#" class="a" title="LinkedIn">Visitar mi LinkedIn</a></li>
+                </ul>
+            </section>
+        </div>
+
+        <section class="seccion" id="works">
+
+            <h2 class="h2">Trabajos</h2>
+            <p class="p">Aquí te presento mis trabajos mientras aprendia un curso
+            de HTML, CSS y JavaScript.</p>
+
+            <div class="grid">
+                <article class="article">
+                    <a class="a" href="#" title="Trabajo1">
+                        <figure class="figure">
+                            <img src="#" alt="Imagen" class="img" Loading="lazy">
+                        </figure>
+                        <h4 class="h4">Nombre del trabajo</h4>
+                    </a>
+                </article>
+
+                <article class="article">
+                    <a class="a" href="#" title="Trabajo1">
+                        <figure class="figure">
+                            <img src="#" alt="Imagen" class="img" Loading="lazy">
+                        </figure>
+                        <h4 class="h4">Nombre del trabajo</h4>
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="seccion about" id="about">
+            <h2 class="h2">Sobre mi</h2>
+            <p class="p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis eius voluptatem cum unde fuga excepturi omnis illo similique iste voluptas repudiandae praesentium, ex quia rem facere at, quo odit repellat.</p>
+            <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam similique vel autem eius deserunt totam esse sed, excepturi voluptatum, natus ad dolore maiores, beatae voluptas? Praesentium ut magni quidem obcaecati?</p>
+            <p class="p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, nisi ab illo, rerum amet numquam sint quos eius debitis deserunt repellat laboriosam dicta repudiandae, hic fugiat at dolorum? Dignissimos, sint?</p>
+            
+            <ul class="rrss">
+                <li class="li">
+                    <a href="#" class="a" title="Nombre" target="_blank" rel="noopener noreferrer">
+                        <svg class="svg"></svg>
+                    </a>
+                </li>
+
+                <li class="li">
+                    <a href="#" class="a" title="Nombre" target="_blank" rel="noopener noreferrer">
+                        <svg class="svg"></svg>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+
+        <span class="span">Hecho con amor Timmy Anderson </span>
+
+    </footer>
+
+</body>
+</html>
+
+
+
+
+/* ESTRUCTURA BASICA Y MINIMA DEL RESET */
+:root {
+    --rojo: #e50914;
+    --blanco: white;
+    --gris: #303030;
+    --negro: black;
+    /*Tipografia*/
+    --tipo-titular: "Playfair Display", serif;
+    --tipo-principal: "Inter", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+img , figure {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    object-fit: cover;
+    object-position: center center;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+video {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    object-fit: cover;
+    object-position: center center;
+}
+
+p a {
+    display: inline;
+}
+
+li {
+    list-style-type: none;
+}
+
+table,
+tr,
+td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+::selection {
+    background-color: var(--negro);
+    color:var(--blanco);
+}
+
+form,button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-hyphens: auto;
+            hyphens: auto;
+    background-color: transparent;
+    display: flex;
+    color: inherit;
+}
+
+body {
+    font-family: var(--tipo-principal);
+    font-size: 100%;
+    min-height: 100vh;
+    background-color: var(--blanco);
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+    width: 100%;
+    min-height: 5em;
+    background: lightblue;
+
+    padding: 1em 2em;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+
+.header .h1{}
+
+.header .h1 .a{}
+
+.header .nav{}
+
+.header .ul{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .li{
+    margin: 0 1em;
+}
+
+.header .li .a{}
+
+.main {
+    background: lightgrey;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.seccion {
+    width: 100%;
+    min-height: 80vh;
+    background: lightseagreen;
+    margin: 1em 0;
+    padding: 2em;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccion.circulos {}
+.seccion.circulo {}
+.seccion .ul {
+    /* background: red; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.seccion .ul .li {
+    /* background: chartreuse; */
+    margin: 0 1em;
+}
+.seccion .ul .a {}
+.seccion .h2 {}
+.seccion .h3 {}
+.seccion .p {}
+
+.seccion .grid {
+    width: 90%;
+    max-width: 40em;
+    background: lightcoral;
+    margin: 1em 0;
+
+    display: grid;
+    grid-template-columns: repeat( auto-fit , minmax(10rem, 1fr));
+    gap: 1em;
+}
+.seccion .article {
+    width: 100%;
+    min-height: 20vh;
+    background: lightgoldenrodyellow;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+.seccion .a {}
+.seccion .figure{
+    width: 100%;
+    background: red;
+}
+
+.seccion .img{
+    width: 100%;
+    background: lime ;
+}
+.seccion .h4{
+    width: 100%;
+    height: 50%;
+    background: coral;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.about {}
+.about .h2 {
+    margin: 0 0 1rem;
+}
+
+.about .p {
+    max-width: 40em;
+    background: lime;
+    margin: 0 0 1em;
+    text-align: left;
+}
+.about .rrss {
+    width:100%;
+    background: lightgreen;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.about .li {
+    background: orange;
+    margin: 0 1em;
+}
+.about .a {}
+.about .svg {
+    width: 2em;
+    height: 2em;
+    /* background: red; */
+}
+
+.footer {
+    /* background-color: lightpink; */
+    padding: 2em 0;
+    text-align: center;
+}
+.footer .span {
+
+}
+
+
+
